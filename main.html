@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="shortcut icon" href="Images/favicon.svg">
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+  <!-- Database -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+  <!-- Authentication -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyB4vKhIhkY7ESH50bfLpJ4RPqwAuZ8IB78",
+    authDomain: "chat-app-assignment-13.firebaseapp.com",
+    databaseURL: "https://chat-app-assignment-13.firebaseio.com",
+    projectId: "chat-app-assignment-13",
+    storageBucket: "chat-app-assignment-13.appspot.com",
+    messagingSenderId: "252824202437",
+    appId: "1:252824202437:web:8a84db2ae90f431e0d94ac",
+    measurementId: "G-5MLJ0K9NZ2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  
+</script>
+
+    <title>Instant Web Messenger</title>
+
+</head>
+<body onload='sweetAlertSuccessMsg("Successfully LogIn"),userName()'>
+
+<div>
+  <h1 id="h1">INSTANT WEB MESSENGER</h1>
+  <img class="float-right" onclick="login_Avatar()" src="Images/avatar.svg" id="avatar">
+</div>
+
+
+<div class="container col-md-8" id="text">
+  <img class="float-left" onclick="" src="Images/avatar1.png"  id="avatar1">
+  <img src="Images/gd.png" id="gd" class="float-left">
+  <span class="float-left" id="username" onclick="userName()">Muhammad Daniyal Zakir</span>
+  <img class="float-right" onclick="" src="Images/3dots.svg"  id="dots">
+
+</div>
+
+
+<div class="container col-md-8" id="border">
+  <div>
+      <ul id="list">
+     </ul>
+  </div>
+</div>
+
+
+
+<div class="container col-md-8" id="txt">
+  <img class="float-left" src="./Images/be.png" alt="" height="50" onclick="" id="emoji">
+
+  <input type="text" class="btn" placeholder="Type a message" maxlength="70" id="text-msg" >
+  <img class="float-right" src="./Images/send.jpg" alt="" height="50" onclick="sendMessage()" id="send_Message">
+  <img class="float-right" src="./Images/attach.png" alt="" height="50" onclick="" id="attach">
+  <img class="float-right" src="./Images/image.png" alt="" height="50" onclick="" id="image-attach">
+  <img class="float-right" src="./Images/camera.png" alt="" height="50" onclick="" id="camera">
+
+</div>
+
+
+<br><br>
+
+
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+
+  <script src="app.js"></script>
+  <script src="Sweet Alert/sweetalert2@9.js"></script>
+</html>

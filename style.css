@@ -1,0 +1,331 @@
+@font-face {
+    font-family: Ubuntu;
+    src: url('./Fonts/ubuntu-bold.ttf'); 
+}
+@font-face {
+  font-family: p-r;
+  src: url('./Fonts/Poppins-Regular.ttf'); 
+}
+
+/* =============== Index Html =============== */
+#body{
+  background: linear-gradient(to right, rgb(113, 124, 228),rgb(58, 77, 248),rgb(113, 124, 228)); 
+  text-align: center !important;
+}
+#heading{
+  font-size: 60px;
+  text-transform: uppercase;
+  font-family: Ubuntu;
+  color: white;
+  text-shadow:1.5px 1.5px 3px black;
+  background: linear-gradient(to right, rgb(113, 124, 228),rgb(58, 77, 248),rgb(113, 124, 228)); 
+  padding-top: 10px;
+  cursor: text;
+  
+}
+#heading>span{
+  font-size: 58px;
+}
+
+#email-auth,#pass-auth, #email-log,#pass-log{
+text-align: center !important;
+border-radius: 25px !important;
+height: 48px;
+width: 345px;
+box-shadow: 3px 3px 5px solid gray;
+font-size: 20px;
+border: 1.5px solid black;
+margin-top: 5px;
+margin: auto;
+
+}
+#email-auth:hover,#pass-auth:hover, #email-log:hover,#pass-log:hover{
+box-shadow: 1px 1px 10px solid rgb(77, 62, 62) !important;
+}
+
+#input:focus,#pass-auth:focus{
+box-shadow: 0px 0px 10px solid whitesmoke !important;
+}
+
+#pass-auth{
+  -webkit-text-security: disc;
+} 
+
+#btn{
+border: 1.5px solid black;
+margin-top: 1px;
+text-align: center;
+border-radius: 30px;
+height: 45px;
+width: 340px;
+background-color: white;
+box-shadow: 3px 3px 5px solid gray;
+font-size: 20px;
+font-family: Ubuntu;
+}
+
+#btn:hover{
+box-shadow: 10px 10px 10px solid rgb(180, 180, 180) !important;
+}
+
+#btn-fb{
+  border: 1.5px solid black;
+margin-top: 20px;
+text-align: center;
+border-radius: 30px;
+height: 45px;
+width: 340px;
+background-color: white;
+box-shadow: 3px 3px 5px solid gray;
+font-size: 20px;
+font-family: Ubuntu;
+
+}
+
+#AdminLogin{
+padding-top: 7px;
+color: white; 
+font-family: Ubuntu;
+font-size: 20px;
+text-shadow:1px 1px 3px black;
+
+}
+
+#login{
+border: 2px solid white;
+border-radius: 20px;
+box-shadow: 1px 1px 10px black;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+
+#body{
+  overflow-x: none !important;
+}
+  #heading{
+    padding-top: 0px !important;
+    font-size: 50px !important;
+
+  }
+   
+  #heading>span{
+    font-size: 46px ;
+  }
+
+  #email-auth,#pass-auth, #email-log,#pass-log{
+    margin-top: -5px !important;
+    font-size: 18px;
+    border-radius: 25px;
+  }
+  #btn{
+    margin-top: -8px !important;
+  }
+  #btn-fb{
+    margin-top: 15px !important;
+
+  }
+
+  #email-auth,#pass-auth,#btn,#btn-fb,#email-log,#pass-log{
+width: 100%;
+  }
+
+  #login{
+    width: 95%;
+  }
+  #AdminLogin{
+    padding-top: 15px;
+  }
+  }
+
+  
+
+
+
+
+/* MAIN.HTML */
+
+#h1{
+  text-transform: capitalize !important;
+  font-family: Ubuntu;
+  text-align: center;
+  color: white;
+  text-shadow:1px 1px 3px black;
+  background: linear-gradient(to right, rgb(113, 124, 228),rgb(71, 89, 252),rgb(113, 124, 228)); 
+  height: 70px;
+  border-bottom: 1px solid black;
+
+  padding-top: 10px;
+}
+
+#avatar{
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid white;
+  position: relative;
+  right: 18px;
+  top: -62px;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 600px) {
+#h1{
+    font-size: 27px !important;
+    height: 55px !important;
+}
+#avatar{
+  visibility: hidden;
+}
+}
+
+
+#avatar1{
+  height: 45px;
+  border-radius: 25px;
+  box-shadow:0px 0px 3px rgb(255, 0, 0);
+  margin-top: 7px;
+  cursor: pointer;
+}
+#avatar1:hover{
+  box-shadow:0px 0px 10px black;
+}
+#gd{
+  border-radius: 20px;
+  height: 10px;
+  margin-top: 40px;
+  margin-left: -7px;  
+}
+
+#username{
+  margin-top: 18px !important ;
+  margin-left: 10px !important ;
+  font-family: p-r;
+  text-transform: capitalize;
+
+}
+#dots{
+  height: 30px;
+  margin-top: 11px;
+  margin-right:-12px;
+  cursor: pointer;
+}
+
+
+#border{
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-color: #fafafa;
+  height: 500px;
+  /* box-shadow:1px 1px 10px black; */
+  box-shadow:0px 0px 10px grey;
+
+  overflow-y: scroll;
+}
+#text{
+  border: 1px solid black;
+  /* background-color: rgb(223, 223, 223); */
+  background: rgb(113, 124, 228); 
+  color: white;
+  height: 60px;
+  box-shadow:0px 0px 10px grey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+#txt{
+  border: 1px solid black;
+  /* background-color: rgb(223, 223, 223); */
+  background: rgb(113, 124, 228); 
+  color: white;
+  height: 60px;
+  box-shadow:0px 0px 10px grey;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+}
+
+#text-msg{
+  border-radius: 29px !important;
+  height: 45px;
+  width: 70%;
+  font-size: 18px;
+  border: 1.5px solid rgb(146, 146, 146);
+  margin-top: 6px;
+  cursor: text;
+  background-color: #ffffff;
+font-family: p-r;
+text-align: left; 
+text-indent: 42px;
+
+
+}
+#text-msg:focus{
+  border: 1.5px solid blue;
+  text-align: left; 
+}
+
+#send_Message,#image-attach,#attach,#camera{
+margin-top: 3px;
+cursor: pointer;
+border: 1.5px solid rgb(182, 182, 182);
+height: 50px;
+border-radius: 25px !important;
+margin-right: 10px;
+background-color: white;
+
+}
+#send_Message:hover,#image-attach:hover,#attach:hover,#camera:hover,#emoji:hover{
+  box-shadow:1px 1px 10px black;
+}
+#emoji{
+  position: absolute;
+  left: 19px;
+  height: 40px;
+  margin-top: 8px;
+  border-radius: 25px !important;
+  cursor: pointer;
+
+}
+
+
+ul>li{
+margin-left:-40px ;
+text-indent: 15px;
+list-style: none;
+border-radius: 25px;
+width: 40%;
+color: white;
+background-color: rgb(142, 142, 243);
+margin-top: 10px;
+padding-top: 5px;
+height: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  #dots{
+    height: 30px;
+    margin-right:-35px;
+  }
+
+  #emoji{
+    position: absolute;
+    left: 11px;
+  }
+
+  #text-msg{
+    border-radius: 29px !important;
+    height: 45px;
+    width: 87%;
+    font-size: 19px;
+    margin-left:-8px;
+  }
+  #image-attach,#attach,#camera{
+    visibility: hidden;
+  }
+  #send_Message{
+    margin-right: -7px;
+  }
+
+}
