@@ -33,6 +33,7 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
   
   
 </script>
@@ -40,7 +41,7 @@
     <title>Instant Web Messenger</title>
 
 </head>
-<body onload='sweetAlertSuccessMsg("Successfully LogIn"),userName()'>
+<body onload='sweetAlertSuccessMsg("Successfully LogIn"),userName()' style="background-color:#ffffff ">
 
 <div>
   <h1 id="h1">INSTANT WEB MESSENGER</h1>
@@ -51,8 +52,8 @@
 <div class="container col-md-8" id="text">
   <img class="float-left" onclick="" src="Images/avatar1.png"  id="avatar1">
   <img src="Images/gd.png" id="gd" class="float-left">
-  <span class="float-left" id="username" onclick="userName()">Muhammad Daniyal Zakir</span>
-  <img class="float-right" onclick="" src="Images/3dots.svg"  id="dots">
+  <span class="float-left" id="username" onclick="userName()">Daniyal Zakir</span>
+  <img class="float-right" onclick="del_all_item(this)" src="Images/3dots.svg"  id="dots">
 
 </div>
 
@@ -68,9 +69,8 @@
 
 <div class="container col-md-8" id="txt">
   <img class="float-left" src="./Images/be.png" alt="" height="50" onclick="" id="emoji">
-
   <input type="text" class="btn" placeholder="Type a message" maxlength="70" id="text-msg" >
-  <img class="float-right" src="./Images/send.jpg" alt="" height="50" onclick="sendMessage()" id="send_Message">
+  <img class="float-right" src="./Images/send.jpg" alt="" height="50" onclick="send_Message()" id="send_Message">
   <img class="float-right" src="./Images/attach.png" alt="" height="50" onclick="" id="attach">
   <img class="float-right" src="./Images/image.png" alt="" height="50" onclick="" id="image-attach">
   <img class="float-right" src="./Images/camera.png" alt="" height="50" onclick="" id="camera">
@@ -78,7 +78,7 @@
 </div>
 
 
-<br><br>
+<br>
 
 
   

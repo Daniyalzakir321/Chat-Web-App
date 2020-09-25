@@ -89,47 +89,157 @@ let facebookSignOut = () =>{
 
 
 
-function add_item(){
-  var items=document.getElementById("items")
-  if(items.value=="")
-  {
-  Swal.fire("Please enter todo items. <br> Can not add empty list.")
-  // items.diseabled=true
-  }
-  else{
-  var key=firebase.database().ref("DATABASE").push().key;
-  firebase.database().ref("DATABASE/"+ key ).set({
-  uid: key,
-  value: items.value  })
-  }
-  }
+
+
+
 
 
 
 // =========================  Main.Html ====================
-
-let sendMessage = () =>{
-  
-var textMsg =document.getElementById("text-msg")
-var list =document.getElementById("list")
-var li= document.createElement("li")
-li.appendChild(document.createTextNode(textMsg.value))
-list.appendChild(li)
-textMsg.value=""
-}
-
-
 // LogIn Avatar
 function login_Avatar(){
   sweetAlertSuccessMsg("You are LogIn")
 }
 
 
-function userName(){
+function userName(un){
 var userName =document.getElementById("username")
-var un= prompt("Enter Your Name")
+var un= prompt("Enter Your Name", "Daniyal Zakir")
 userName.innerHTML=un
 }
+
+
+
+//========================== FIREBASE =====================
+var li=document.getElementById("list")
+
+// FIREBASE GET DATA
+firebase.database().ref("DATABASE").on("child_added",function(data){
+  var uid= data.val().uid
+  var m= data.val().message
+  // var date= data.val().date
+  // var time= data.val().time 
+
+    
+  // MESSAG
+  var create_li=document.createElement("li")
+  var li_Text=document.createTextNode(m)
+  create_li.appendChild(li_Text)
+    
+    
+  // Edit  Button
+  // var edit_btn= document.createElement("img")
+  // edit_btn.src='Images/edit.png'
+  // edit_btn.alt="EDIT"
+  // edit_btn.setAttribute("id",uid)
+  // edit_btn.setAttribute("onclick","edit_li(this)")
+  // create_li.appendChild(edit_btn)
+    
+    
+  // Delete  Button
+  var del_btn= document.createElement("img")
+  del_btn.src='Images/sdot.svg'
+  del_btn.alt="DELETE"
+  del_btn.className="delclass"
+  del_btn.setAttribute("id",uid)
+  del_btn.setAttribute("onclick","delete_li(this)")
+  create_li.appendChild(del_btn)
+    
+    
+  li.appendChild(create_li)
+    
+})
+
+
+//  FIREBASE DATA INSERTION
+function send_Message(){
+  // Date
+  var today = new Date();
+  var msgDate = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+// Time
+  var toda = new Date();
+  var msgTime = toda.getHours() + ":" + toda.getMinutes();
+
+
+  var textMsg =document.getElementById("text-msg")
+  if(textMsg.value=="")
+  {
+  Swal.fire("Please Write Something")
+  }
+  else{
+  var key=firebase.database().ref("DATABASE").push().key;
+  firebase.database().ref("DATABASE/"+ key ).set({
+  uid: key,
+  messsage: textMsg.value,  
+  date: msgDate,
+  time: msgTime 
+})
+  }
+  textMsg.value=""
+  }
+
+  
+  
+  // FIREBASE DELETING A SINGLE LI
+  function delete_li(key){
+  firebase.database().ref("DATABASE/"+ key.id).remove()
+  key.parentNode.remove()
+  sweetAlertSuccessMsg("Deleted Successfully")
+  }
+  
+  
+  
+  // FIREBASE EDIT VALUE
+  // function edit_li(key){   
+  // edit_Val= prompt("Enter Edit Value",  key.parentNode.firstChild.nodeValue )
+  // firebase.database().ref("DATABASE/"+ key.id).set({
+  //   uid: key.id,
+  //   value: edit_Val,
+  //   date: msgDate,
+  //   time: msgIime  })
+  // key.parentNode.firstChild.nodeValue= edit_Val
+  // sweetAlertSuccessMsg("Edit Successfully") 
+  // }
+  
+  
+  
+  // DELETING ALL MESSAGES FROM FIREBASE With Sweet Alert Library
+  function del_all_item(){
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You Want to Delete All Messages!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+         li.innerHTML="";
+        //  FIREBASE REMOVE ALL DATA
+        firebase.database().ref("DATABASE").remove()
+  
+          Swal.fire(
+            'Deleted!',
+            'All Messages Are Deleted.',
+            'success'
+          )
+        }
+      })
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -197,114 +307,3 @@ function sweetAlertName(){
   });
 
 }
-
-
-// // ============== FIREBASE STUDENT ADD ================
-// var a=document.getElementById("a")
-// var b=document.getElementById("b")
-// var c=document.getElementById("c")
-// var d=document.getElementById("d")
-
-// function adding(){ 
-  
-//   if(a.value==""){
-//     Swal.fire("PLease Enter ID To Add")
-//   }
-//   else  if(c.value==""){
-//     Swal.fire("PLease Enter Name To Add")
-//   }        
-//   else if(d.value==""){
-//     Swal.fire("PLease Enter Contact To Add")
-//   }
-//   else if(b.value==""){
-//     Swal.fire("PLease Enter Email To Add")
-//   }
-//   else{ 
-//   firebase.database().ref("Database/"+a.value).set({
-//     Id: a.value,
-//     Name: b.value,
-//     Contact: c.value,
-//     Email: d.value
-// })
-// sweetAlertSuccessMsg("Add Successful")
-// // QR-Code Generation
-// document.getElementById("qr0").innerHTML=""
-// new QRCode(document.getElementById("qr0"), a.value); 
-
-// a.value=""
-// b.value=""
-// c.value=""
-// d.value=""
-// }
-// }
-
-
-// function search(){
-//   if(a.value==""){
-//     Swal.fire("PLease Enter ID To Search")
-//   }
-//   else{
-//   b.value=""
-//   c.value=""
-//   d.value=""    
-//   firebase.database().ref("Database/"+a.value).on("value",function(data){
-//     b.value= data.val().Name,
-//     c.value= data.val().Contact,
-//     d.value= data.val().Email
-// })
-// // if(b.value==true){
-// document.getElementById("qr0").innerHTML=""
-// sweetAlertSuccessMsg("Search Successful")
-// // }
-// }
-// }
-
-
-// function update(){
-//   if(a.value==""){
-//     Swal.fire("PLease Enter ID To Update Data")
-//   }
-//   else  if(c.value==""){
-//     Swal.fire("PLease Enter Name To Update")
-//   }        
-//   else if(d.value==""){
-//     Swal.fire("PLease Enter Contact To Update")
-//   }
-//   else if(b.value==""){
-//     Swal.fire("PLease Enter Email To Update")
-//   }
-//   else{
-// firebase.database().ref("Database/"+a.value).set({
-//     Id: a.value,
-//     Name: b.value,
-//     Contact: c.value,
-//     Email: d.value
-// })
-// sweetAlertSuccessMsg("Update Successful")
-// // QR-Code Generation
-// document.getElementById("qr0").innerHTML=""
-// new QRCode(document.getElementById("qr0"), a.value); 
-// a.value=""
-// b.value=""
-// c.value=""
-// d.value=""
-// }
-// }
-
-
-// function del(){
-//   if(a.value==""){
-//     Swal.fire("PLease Enter ID To Delete Data")
-//   }
-//   else{
-//   firebase.database().ref("Database/"+a.value).remove() 
-//   a.value=""
-//   document.getElementById("qr0").innerHTML=""
-//   sweetAlertSuccessMsg("Delete Successful")
-// a.value=""
-// b.value=""
-// c.value=""
-// d.value=""
-//   }
-// }
-
