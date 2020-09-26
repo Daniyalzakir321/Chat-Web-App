@@ -102,11 +102,25 @@ function login_Avatar(){
 }
 
 
-function userName(un){
-var userName =document.getElementById("username")
-var un= prompt("Enter Your Name", "Daniyal Zakir")
-userName.innerHTML=un
+// function userName(un){
+// var userName =document.getElementById("username")
+// var un= prompt("Enter Your Name", "Daniyal Zakir")
+// userName.innerHTML=un
+// }
+
+function comingSoon(){
+Swal.fire({
+title: 'Coming Soon',
+imageUrl: 'Images/comingsoon.gif',
+imageWidth: 320,
+imageHeight: 210,
+imageAlt: 'Will Be Available Soon.',})
 }
+
+function log_Out(){
+  location.replace("index.html")
+}
+
 
 
 
@@ -116,17 +130,16 @@ var li=document.getElementById("list")
 // FIREBASE GET DATA
 firebase.database().ref("DATABASE").on("child_added",function(data){
   var uid= data.val().uid
-  var m= data.val().message
-  // var date= data.val().date
-  // var time= data.val().time 
-
+  var message=data.val().messageText
+  var date= data.val().date
+  var time= data.val().time 
     
-  // MESSAG
+  // MESSAGE
   var create_li=document.createElement("li")
-  var li_Text=document.createTextNode(m)
+  var li_Text=document.createTextNode(message)
   create_li.appendChild(li_Text)
-    
-    
+   
+ 
   // Edit  Button
   // var edit_btn= document.createElement("img")
   // edit_btn.src='Images/edit.png'
@@ -135,7 +148,8 @@ firebase.database().ref("DATABASE").on("child_added",function(data){
   // edit_btn.setAttribute("onclick","edit_li(this)")
   // create_li.appendChild(edit_btn)
     
-    
+
+
   // Delete  Button
   var del_btn= document.createElement("img")
   del_btn.src='Images/sdot.svg'
@@ -145,9 +159,35 @@ firebase.database().ref("DATABASE").on("child_added",function(data){
   del_btn.setAttribute("onclick","delete_li(this)")
   create_li.appendChild(del_btn)
     
-    
+  // Time
+  var timeSpan=document.createElement("span")
+  var timeS=document.createTextNode(time)
+  timeSpan.className="timeSpan"
+  timeSpan.appendChild(timeS)
+  create_li.appendChild(timeSpan)
+  
+// Date
+  var dateSpan=document.createElement("span")
+  var dateS=document.createTextNode(date)
+  dateSpan.className="dateSpan"
+  dateSpan.appendChild(dateS)
+  create_li.appendChild(dateSpan)
+
+//  Double Tick
+  var doubletick= document.createElement("img")
+  doubletick.src='Images/doubletick.svg'
+  doubletick.className="doubletick"
+  create_li.appendChild(doubletick)
+
+  // Avatar Mini
+  var am= document.createElement("img")
+  am.src='Images/avatar2.png'
+  am.className="am"
+  create_li.appendChild(am)
+
+
   li.appendChild(create_li)
-    
+
 })
 
 
@@ -170,13 +210,13 @@ function send_Message(){
   var key=firebase.database().ref("DATABASE").push().key;
   firebase.database().ref("DATABASE/"+ key ).set({
   uid: key,
-  messsage: textMsg.value,  
+  messageText: textMsg.value,  
   date: msgDate,
-  time: msgTime 
+  time: msgTime   
 })
-  }
-  textMsg.value=""
-  }
+}
+textMsg.value=""
+}
 
   
   
