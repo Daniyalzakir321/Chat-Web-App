@@ -1,4 +1,4 @@
-// ======== SignUp ========
+// ======== Firebase SignUp ========
 let signUp = () => {
   var email= document.getElementById("email-auth")
   var password= document.getElementById("pass-auth")
@@ -24,7 +24,8 @@ password.value=""
 });
 }
 
-// ========= LogIn ========
+
+// =========Firebase LogIn ========
 let logIn = () => {
   var email= document.getElementById("email-log")
   var password= document.getElementById("pass-log")
@@ -57,7 +58,7 @@ firebase.auth().signOut()
 
 
 
-// ======== Facebook LogIn ========
+// ====================== Facebook LogIn ====================
 let facebookLogIn = () =>{
 var provider = new firebase.auth.FacebookAuthProvider();
 
@@ -74,6 +75,7 @@ location.replace('main.html');
   console.log(error.message)
 });
 }
+
 
 // ========= Facebook SignOut ========
 let facebookSignOut = () =>{
@@ -102,12 +104,7 @@ function login_Avatar(){
 }
 
 
-// function userName(un){
-// var userName =document.getElementById("username")
-// var un= prompt("Enter Your Name", "Daniyal Zakir")
-// userName.innerHTML=un
-// }
-
+// Coming Soon Gif
 function comingSoon(){
 Swal.fire({
 title: 'Coming Soon',
@@ -117,11 +114,30 @@ imageHeight: 210,
 imageAlt: 'Will Be Available Soon.',})
 }
 
+
+//   LogOut
 function log_Out(){
   location.replace("index.html")
 }
 
 
+// Emoji
+function emoji(){
+document.getElementById("text-msg").value+="😇"
+}
+
+
+//  User Name Input
+function userName(){
+  Swal.fire({
+    title: 'Enter Your Name',
+    input: 'text',
+    inputValue: 'Daniyal Zakir',
+    inputValidator: (value) => {
+    var userName =document.getElementById("username")
+    userName.innerHTML=value }
+ })
+}
 
 
 //========================== FIREBASE =====================
@@ -134,27 +150,18 @@ firebase.database().ref("DATABASE").on("child_added",function(data){
   var date= data.val().date
   var time= data.val().time 
     
-  // MESSAGE
-  var create_li=document.createElement("li")
+  // Create Message 
+  var create_li=document.createElement("span")
   var li_Text=document.createTextNode(message)
   create_li.appendChild(li_Text)
    
- 
-  // Edit  Button
-  // var edit_btn= document.createElement("img")
-  // edit_btn.src='Images/edit.png'
-  // edit_btn.alt="EDIT"
-  // edit_btn.setAttribute("id",uid)
-  // edit_btn.setAttribute("onclick","edit_li(this)")
-  // create_li.appendChild(edit_btn)
-    
-
 
   // Delete  Button
   var del_btn= document.createElement("img")
   del_btn.src='Images/sdot.svg'
   del_btn.alt="DELETE"
   del_btn.className="delclass"
+  del_btn.title="Delete Message"
   del_btn.setAttribute("id",uid)
   del_btn.setAttribute("onclick","delete_li(this)")
   create_li.appendChild(del_btn)
@@ -163,6 +170,7 @@ firebase.database().ref("DATABASE").on("child_added",function(data){
   var timeSpan=document.createElement("span")
   var timeS=document.createTextNode(time)
   timeSpan.className="timeSpan"
+  timeSpan.title="Time"
   timeSpan.appendChild(timeS)
   create_li.appendChild(timeSpan)
   
@@ -170,6 +178,7 @@ firebase.database().ref("DATABASE").on("child_added",function(data){
   var dateSpan=document.createElement("span")
   var dateS=document.createTextNode(date)
   dateSpan.className="dateSpan"
+  dateSpan.title="Date"
   dateSpan.appendChild(dateS)
   create_li.appendChild(dateSpan)
 
@@ -177,23 +186,27 @@ firebase.database().ref("DATABASE").on("child_added",function(data){
   var doubletick= document.createElement("img")
   doubletick.src='Images/doubletick.svg'
   doubletick.className="doubletick"
+  doubletick.title="Seen"
   create_li.appendChild(doubletick)
 
   // Avatar Mini
   var am= document.createElement("img")
-  am.src='Images/avatar2.png'
+  am.src='Images/avatar2.PNG'
   am.className="am"
   create_li.appendChild(am)
 
-
   li.appendChild(create_li)
+  
+  // Break With Message
+  var br=document.createElement("br")
+  li.appendChild(br)
 
 })
 
 
 //  FIREBASE DATA INSERTION
 function send_Message(){
-  // Date
+// Date
   var today = new Date();
   var msgDate = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
 // Time
@@ -273,18 +286,8 @@ textMsg.value=""
 
 
 
-
-
-
-
-
-
-
-
-
-
 // /*================ Sweet Alert Library ==============*/
-// Sweet Alert Library Message
+// Sweet Alert Success Tick Message
 function sweetAlertSuccessMsg(msg){
     const Toast = Swal.mixin({
     toast: true,
